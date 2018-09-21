@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # sumn
 
-Read THIS!
+
