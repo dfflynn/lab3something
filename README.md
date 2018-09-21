@@ -1,4 +1,5 @@
-<<<<<<< HEAD
-# sumn
+# something
 
+readme
 
+hello world
