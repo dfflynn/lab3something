@@ -16,8 +16,10 @@ body{
 div {
     float: left;
     float: none;
-    display: block;
+    display: inline-table;
     padding-top: 5%;
+    margin-left: 5%;
+    width: 10%;
 }
 #winner {
     font-family: Impact, fantasy;
@@ -40,4 +42,18 @@ footer {
 
 #main {
     display: table-row-group;
+}
+button{
+    border: solid;
+    border-color: pink;
+    background-color: black;
+    color: pink;
+    font-size: larger;
+}
+span{
+    display: flex;
+    content: "\A";
+    white-space: pre;
+    width: 69%;
+    margin: auto;
 }

@@ -18,53 +18,68 @@
                 }
             }shuffle($deck);
             $hand = array(0 => array(), 1=>array(), 2=>array(), 3=>array());
-			$names = array("Bruce", "Hulk", "Jackie", "Lady");
-			$totals = array();
-			$total = 0;
+			$players = array("Bruce", "Hulk", "Jackie", "Lady");
+			$scores = array();
+			$score = 0;
 			
 			for ($k = 0; $k < 4; $k++){
-				$total = 0;
-				$j = rand(1,6);
+				$score = 0;
+				$j = mt_rand(6,6);
 				for ($i = 0; $i < $j; $i++) {
 				    $card = array_pop($deck);
-					$total += $card["value"];
-				    $hand[$k][] = $card;
+					$score += $card["value"];
+				   // $hand[$k] = $card;
+				    array_push($hand[$k],$card);
 				}
-				$totals[] = $total;
+				//$scores[] = $score;
+				array_push($scores,$score);
 			}
 			$max = 0;
 			for($i = 0; $i < 4; $i++){
-				while($totals[$i] <= 42 && $totals[$i] > $max){
-					$max = $totals[$i];
+				while($scores[$i] <= 42 && $scores[$i] > $max){
+					$max = $scores[$i];
 				}
 			}
-			
+			echo "<span>";
 			$forPlayers = glob("players/*.*"); // found this code online
 			for ($i=0; $i<count($forPlayers); $i++){ // supposed to display players
 				$image=$forPlayers[$i];
 				$fileType=array('jpg');
 			$ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
 				if(in_array($ext, $fileType)) {
-					echo '<img src="'.$image.'" alt ="Random image" />'."<br/><br/>";
+					echo '<img src="'.$image.'". alt ="player". />'."<br/><br/>";
 				}
 				else {
 					continue;
 				}
 			}
+			echo "</span>";
 			for ($k = 0; $k < 4; $k++){
 				echo "<div>";
 				for ($i = 0; $i < count($hand[$k]); $i++) {
-					//code to display cards should go here
+					//echo "<img src='cards/'".$hand[$k][$i].".jpg'>";
+					//echo "<img src='cards/'".'$hand[$k][$i]'.".'png'>";
+					//echo "<img src='cards/.png'>";
+					echo "<img src='cards/'".'hand[$k]'.".'png'>";
+					//echo "hello";
+					//echo "<div>";
+					//echo "<img src = 'players/".$k.".jpg'>";
+					//echo "<img src = 'cards/clubs".$k.".jpg".$i.".png'>";
+					//echo "<img src = 'players/".$k.".jpg'>";
+					//echo "</div>";
 				}
-				echo $totals[$k];
-				if($totals[$k] == $max){
-					echo "<div id='winner'>" . $names[$k] . " wins! </div>";
+				echo $scores[$k];
+				if($scores[$k] == $max){
+					echo "<div id='winner'>" . $players[$k] . " wins! </div>";
+					//echo $players[$k].$scores[$k]+$scores[$k];
 				}
 				echo "</div>";
 			}
 			?>
 		</div>
 		<footer>
-			<p>The END.</p>
+			<a href="index.php" ><button>Play Again</button></a>
+			<p>The END</p>
+			<p>Created by: Michael Avalos-Garcia & David Flynn</p>
 		</footer>
 	</body>
