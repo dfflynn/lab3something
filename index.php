@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 	<title>Silver Jack</title>
@@ -28,10 +29,8 @@
 				for ($i = 0; $i < $j; $i++) {
 				    $card = array_pop($deck);
 					$score += $card["value"];
-				   // $hand[$k] = $card;
 				    array_push($hand[$k],$card);
 				}
-				//$scores[] = $score;
 				array_push($scores,$score);
 			}
 			$max = 0;
@@ -55,31 +54,37 @@
 			}
 			echo "</span>";
 			for ($k = 0; $k < 4; $k++){
-				echo "<div>";
+				echo "<div id='cards'>";
 				for ($i = 0; $i < count($hand[$k]); $i++) {
-					//echo "<img src='cards/'".$hand[$k][$i].".jpg'>";
-					//echo "<img src='cards/'".'$hand[$k][$i]'.".'png'>";
-					//echo "<img src='cards/.png'>";
-					echo "<img src='cards/'".'hand[$k]'.".'png'>";
-					//echo "hello";
-					//echo "<div>";
-					//echo "<img src = 'players/".$k.".jpg'>";
-					//echo "<img src = 'cards/clubs".$k.".jpg".$i.".png'>";
-					//echo "<img src = 'players/".$k.".jpg'>";
-					//echo "</div>";
+							echo "<img src = 'cards/" . $hand[$k][$i]['suit'] . "/" . $hand[$k][$i]['value'] . ".png'>";
 				}
 				echo $scores[$k];
+				
+				
 				if($scores[$k] == $max){
 					echo "<div id='winner'>" . $players[$k] . " wins! </div>";
-					//echo $players[$k].$scores[$k]+$scores[$k];
+					$winner = $players[$k];
+					
 				}
-				echo "</div>";
-			}
+				if($scores[$k] != $max){
+				
+					$tempScore += $scores[$k];
+				}
+					echo "</div>";
+				}
 			?>
 		</div>
+		
 		<footer>
+				
+			<?php 
+				
+				echo "<br/>";
+				echo $winner . " wins with " . $tempScore . " points!!!" . "<br/><br/>"; 
+			?>
 			<a href="index.php" ><button>Play Again</button></a>
-			<p>The END</p>
+			<p>The END!</p>
 			<p>Created by: Michael Avalos-Garcia & David Flynn</p>
 		</footer>
 	</body>
+</html>

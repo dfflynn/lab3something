@@ -10,8 +10,8 @@ h1 {
     padding: 1%;
     border-color: pink;
 }
-body{
-    background-color: silver;
+body {
+    background-color: teal;
 }
 div {
     float: left;
@@ -56,4 +56,9 @@ span{
     white-space: pre;
     width: 69%;
     margin: auto;
+}
+#cards {
+    content: "\A";
+    display: inline-block;
+    margin-left: 14%;
 }
